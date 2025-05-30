@@ -85,6 +85,11 @@ export default function BoardPage() {
                                         <CompletionMarker className="hover:glow" color="white" />
                                     </div>
                                     <div className="">{task.name}</div>
+                                    <div className="flex gap-1">
+                                        {task.tags && task.tags.map((tag: string, index: number) => (
+                                            <span key={index} className="bg-gray-600 text-white px-2 py-1 rounded-md text-xs">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -111,6 +116,11 @@ export default function BoardPage() {
                                         <CompletionMarker className="hover:glow" color="white" />
                                     </div>
                                     <div className="">{task.name}</div>
+                                    <div className="flex gap-1">
+                                        {task.tags && task.tags.map((tag: string, index: number) => (
+                                            <span key={index} className="bg-gray-600 text-white px-2 py-1 rounded-md text-xs">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -137,6 +147,11 @@ export default function BoardPage() {
                                         <CompletionMarker className="" color="green" />
                                     </div>
                                     <div className="">{task.name}</div>
+                                    <div className="flex gap-1">
+                                        {task.tags && task.tags.map((tag: string, index: number) => (
+                                            <span key={index} className="bg-gray-600 text-white px-2 py-1 rounded-md text-xs">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -163,6 +178,11 @@ export default function BoardPage() {
                                         <CompletionMarker className="hover:glow" color="red" />
                                     </div>
                                     <div className="">{task.name}</div>
+                                    <div className="flex gap-1">
+                                        {task.tags && task.tags.map((tag: string, index: number) => (
+                                            <span key={index} className="bg-gray-600 text-white px-2 py-1 rounded-md text-xs">{tag}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
                         ))}

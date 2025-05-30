@@ -41,49 +41,25 @@ const Dropdown = ({ selectedProject, setSelectedProject }: { selectedProject: Pr
 }
 
 export default function SideBarLayout({ children, selectedProject, setSelectedProject }: { children: React.ReactNode, selectedProject: ProjectType, setSelectedProject: (project: ProjectType) => void }) {
-
     return <div className="w-full">
-        <div className={`relative h-screen flex`}>
-
-
-
-            <div className="w-full h-full flex justify-start items-center bg-[#000000]">
-                <div className="w-[240px] h-screen bg-[#000000]">
+        <div className={`relative h-screen flex flex-col md:flex-row`}>
+            <div className="w-full h-full flex flex-col md:flex-row justify-start items-center bg-[#000000]">
+                <div className="w-full md:w-[240px] h-auto md:h-screen bg-[#000000] p-4 md:p-0">
                     <Dropdown selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
                 </div>
                 <div className="w-full h-full bg-[#08090C]">
                     <div className="w-full h-12 bg-[#000000] flex justify-center items-center">
                         <div className="w-full h-full flex justify-center items-center">
-                            <div className="text-white text-sm font-medium">
+                            <div className="text-white text-sm font-medium px-4 text-center">
                                 {selectedProject?.name ? `${selectedProject.name || ""} - Board` : ""}
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-full p-4 rounded-lg">
+                    <div className="w-full h-full p-2 md:p-4 rounded-lg">
                         {children}
                     </div>
                 </div>
             </div>
-
-            {/* <div className={`absolute inset-0`}>
-                <div className={`absolute inset-0 -z-10 h-full w-full bg-darkPrimary bg-[linear-gradient(to_right,#E1EACD10_1px,transparent_1px),linear-gradient(to_bottom,#E1EACD10_1px,transparent_1px)] bg-[size:2rem_6rem]`}></div>
-            </div>
-            <div style={{ backgroundImage: `radial-gradient(circle, black, transparent)`, width: "100%", height: "100%" }} className={`absolute inset-0 -z-10 flex w-2/3 h-full flex-col items-center justify-center px-4`}>
-                <div className={`absolute inset-0`}>
-                    <div className={`absolute inset-0 -z-20 h-full w-full ${isHighlighter ? 'bg-[size:14px_24px] [&>div]:absolute [&>div]:left-0 [&>div]:right-0 [&>div]:top-0 [&>div]:-z-20 [&>div]:m-auto [&>div]:h-[400px] [&>div]:w-[400px] [&>div]:rounded-full [&>div]:bg-[#C95792] [&>div]:opacity-60 [&>div]:blur-[100px] [&>div]:bg-[size:14px_24px]' : ''}`}>
-                        <div></div>
-
-                    </div>
-                </div>
-
-
-            </div>
-            <div className={`relative z-10 flex w-2/3 h-full flex-col items-center justify-center px-4`}>
-                {children}
-            </div> */}
         </div>
-    </div >
-
-
-
+    </div>
 }

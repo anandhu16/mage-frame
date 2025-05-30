@@ -36,10 +36,10 @@ const CreateTaskModal = ({ isOpen, setIsOpen, projectId, selectedProject }: { is
 
     }
     return isOpen ? (
-        <div className="fixed inset-0 bg-[#00000080] bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white p-6 rounded-lg shadow-lg w-11/12 md:w-2/3 lg:w-1/3">
+        <div className="fixed inset-0 bg-[#00000080] bg-opacity-50 flex justify-center items-center p-4">
+            <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg w-full max-w-[500px] max-h-[90vh] overflow-y-auto">
                 <div className="flex justify-between items-center">
-                    <h1 className="text-xl font-bold mb-4 text-black">Create Task</h1>
+                    <h1 className="text-lg md:text-xl font-bold mb-4 text-black">Create Task</h1>
                     <button onClick={() => setIsOpen(false)} className="text-red-500 mb-4">Close</button>
                 </div>
                 <form onSubmit={(e) => {
@@ -55,35 +55,31 @@ const CreateTaskModal = ({ isOpen, setIsOpen, projectId, selectedProject }: { is
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-bold text-gray-700">Start Date</label>
-                        <div className="flex gap-2">
+                        <div className="flex flex-col md:flex-row gap-2">
                             <input type="date" className="border border-gray-300 rounded w-full py-1 px-2 text-black outline-none" value={startDate} onChange={(e) => {
                                 const newStartDate = e.target.value;
                                 setStartDate(newStartDate);
                                 setTask({ ...task, startTime: newStartDate + 'T' + startTime });
-                                console.log(newStartDate)
                             }} />
                             <input type="time" className="border border-gray-300 rounded w-full py-1 px-2 text-black outline-none" value={startTime} onChange={(e) => {
                                 const newStartTime = e.target.value;
                                 setStartTime(newStartTime);
                                 setTask({ ...task, startTime: startDate + 'T' + newStartTime });
-                                console.log(newStartTime)
                             }} />
                         </div>
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-bold text-gray-700">Deadline</label>
-                        <div className="flex gap-2">
+                        <div className="flex flex-col md:flex-row gap-2">
                             <input type="date" className="border border-gray-300 rounded w-full py-1 px-2 text-black outline-none" value={deadline} onChange={(e) => {
                                 const newDeadline = e.target.value;
                                 setDeadline(newDeadline);
                                 setTask({ ...task, deadline: newDeadline + 'T' + deadlineTime });
-                                console.log(newDeadline)
                             }} />
                             <input type="time" className="border border-gray-300 rounded w-full py-1 px-2 text-black outline-none" value={deadlineTime} onChange={(e) => {
                                 const newDeadlineTime = e.target.value;
                                 setDeadlineTime(newDeadlineTime);
                                 setTask({ ...task, deadline: deadline + 'T' + newDeadlineTime });
-                                console.log(newDeadlineTime)
                             }} />
                         </div>
                     </div>

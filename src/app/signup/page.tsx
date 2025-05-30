@@ -80,9 +80,9 @@ export default function SignupPage() {
 
     return (
         <BackgroundLayout>
-            <div className="flex flex-col items-center justify-center min-h-screen w-full">
-                <Card className="w-2/5 [background:linear-gradient(45deg,#172033,theme(colors.black)_50%,#172033)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.gray.600/.48)_80%,_theme(colors.indigo.500)_86%,_theme(colors.pink.300)_90%,_theme(colors.indigo.500)_94%,_theme(colors.gray.600/.48))_border-box] rounded-2xl border border-transparent animate-border bg-gradient-to-br from-neutral-800 via-neutral-950 to-neutral-900">
-                    <CardHeader className="flex flex-col items-center justify-center gap-4">
+            <div className="flex flex-col items-center justify-center min-h-screen w-full px-4">
+                <Card className="w-[95%] sm:w-[80%] md:w-[70%] lg:w-2/5 [background:linear-gradient(45deg,#172033,theme(colors.black)_50%,#172033)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.gray.600/.48)_80%,_theme(colors.indigo.500)_86%,_theme(colors.pink.300)_90%,_theme(colors.indigo.500)_94%,_theme(colors.gray.600/.48))_border-box] rounded-2xl border border-transparent animate-border bg-gradient-to-br from-neutral-800 via-neutral-950 to-neutral-900">
+                    <CardHeader className="flex flex-col items-center justify-center gap-4 px-4 md:px-6">
                         <Image
                             src={`https://logo.clearbit.com/${email.split("@")[1]}?format=png&size=128&fallback=monogram&retina=true`}
                             alt="logo"
@@ -93,13 +93,13 @@ export default function SignupPage() {
                                 target.src = '/default-logo.png';
                             }}
                         />
-                        <h1 className="text-2xl font-medium">Create your account</h1>
+                        <h1 className="text-xl md:text-2xl font-medium text-center">Create your account</h1>
                     </CardHeader>
-                    <CardContent>
-                        {errorMessage && <p className="text-red-500 mb-4">{errorMessage}</p>}
+                    <CardContent className="px-4 md:px-6">
+                        {errorMessage && <p className="text-red-500 mb-4 text-sm md:text-base">{errorMessage}</p>}
                         <form onSubmit={handleSubmit} className="space-y-4 flex flex-col gap-4">
                             <div>
-                                <Label htmlFor="name">Name</Label>
+                                <Label htmlFor="name" className="text-sm md:text-base">Name</Label>
                                 <Input
                                     id="name"
                                     type="text"
@@ -108,10 +108,11 @@ export default function SignupPage() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     disabled={isSubmitting}
+                                    className="text-sm md:text-base"
                                 />
                             </div>
                             <div>
-                                <Label htmlFor="email">Email</Label>
+                                <Label htmlFor="email" className="text-sm md:text-base">Email</Label>
                                 <Input
                                     id="email"
                                     type="email"
@@ -120,10 +121,11 @@ export default function SignupPage() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     disabled={isSubmitting}
+                                    className="text-sm md:text-base"
                                 />
                             </div>
                             <div>
-                                <Label htmlFor="password">Password</Label>
+                                <Label htmlFor="password" className="text-sm md:text-base">Password</Label>
                                 <Input
                                     id="password"
                                     type="password"
@@ -132,18 +134,19 @@ export default function SignupPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     disabled={isSubmitting}
+                                    className="text-sm md:text-base"
                                 />
                             </div>
                             <Button
                                 type="submit"
-                                className="w-full cursor-pointer bg-gradient-to-r from-indigo-500 to-purple-500"
+                                className="w-full cursor-pointer bg-gradient-to-r from-indigo-500 to-purple-500 text-sm md:text-base py-2 md:py-3"
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting ? "Creating account..." : "Create account"}
                             </Button>
                         </form>
                         <div className="mt-4 text-center">
-                            <p className="text-sm text-gray-400">
+                            <p className="text-xs md:text-sm text-gray-400">
                                 Already have an account?{" "}
                                 <Link href="/login" className="text-indigo-400 hover:text-indigo-300">
                                     Login here

@@ -9,9 +9,10 @@ import CompletionMarker from "@/assets/svg/CompletionMarker";
 import EmptyTaskBoard from "@/assets/svg/EmptyTaskBoard";
 import CreateTaskModal from "@/components/molecules/CreateTaskModal";
 import { projectService } from "@/services/api/projectService";
+import { taskService } from "@/services/api";
 
 export default function BoardPage() {
-    const { error } = useToast();
+    const { error, success } = useToast();
     const router = useRouter();
 
     const [selectedProject, setSelectedProject] = useState<ProjectType>({} as ProjectType);
@@ -40,10 +41,19 @@ export default function BoardPage() {
         }
     }, [searchTask])
 
-    const handleTaskCompletion = (taskId: number) => {
+    const handleTaskCompletion = async (taskId: number) => {
         const updatedTasks = tasks.map((task) => task.id === taskId ? { ...task, status: "success" } : task);
-        setTasks(updatedTasks);
-        setFilteredTasks(updatedTasks);
+        let task = tasks.find((task) => task.id === taskId);
+        task.status = "success";
+        console.log(task);
+        const response = await taskService.updateTask(taskId.toString(), task);
+        if (response) {
+            setTasks(updatedTasks);
+            setFilteredTasks(updatedTasks);
+            success("Task completed successfully");
+        } else {
+            error("Failed to complete task");
+        }
     }
 
     return <SideBarLayout selectedProject={selectedProject} setSelectedProject={setSelectedProject}>
